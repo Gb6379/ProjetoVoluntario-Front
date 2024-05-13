@@ -32,6 +32,7 @@ const NewAccountInstitution = () => {
     const [showNotification, setShowNotification] = useState(false);
     const [notificationMessage, setNotificationMessage] = useState('');
     const [name, setName] = useState('');
+    const [password, setPassword] = useState('');
     const [selectedState, setSelectedState] = useState<allCities | null>(null);
     const [getAllCities, setGetAllCities] = useState<allCities[]>([]);
     const [registration, setRegistration] = useState('');
@@ -91,6 +92,7 @@ const NewAccountInstitution = () => {
             {
                 name: name,
                 email: email,
+                password: password,
                 cnpj: cnpj,
                 phone: phone,
                 tipo: tipo,
@@ -127,7 +129,7 @@ const NewAccountInstitution = () => {
                     showSnackbarError('Erro desconhecido');
                 }
             });
-    }, [email, name, cnpj, phone,tipo ,info, hours,voluntarioStatus, doacoeStatus, itensNecessarios, servicosNecessarios, cep, rua, bairro, numero, cidade, registration]);
+    }, [email, name, password, cnpj, phone,tipo ,info, hours,voluntarioStatus, doacoeStatus, itensNecessarios, servicosNecessarios, cep, rua, bairro, numero, cidade, registration]);
 
     const showSnackbarError = (message: string) => {
         setNotificationMessage(message);
@@ -162,6 +164,7 @@ const NewAccountInstitution = () => {
                 <Typography variant="h4" gutterBottom>Cadastro de Intituticao</Typography>
                 <TextField value={name} onChange={(e) => setName(e.target.value)} label="Nome" sx={{ mt: '15px' }} />
                 <TextField value={email} onChange={(e) => setEmail(e.target.value)} label="Email" type="email" sx={{ mt: '15px' }} />
+                <TextField value={password} onChange={(e) => setPassword(e.target.value)} label="Senha" type="password" sx={{ mt: '15px' }} />
                 <TextField value={cnpj} onChange={(e) => setCnpj(e.target.value)} label="Cnpj" type="cnpj" sx={{ mt: '15px' }} />
                 <TextField value={phone} onChange={(e) => setPhone(e.target.value)} label="phone" type="phone" sx={{ mt: '15px' }} />
                 <FormControl sx={{ mt: '15px' }}>

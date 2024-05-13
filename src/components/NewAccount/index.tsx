@@ -26,6 +26,7 @@ const NewAccount = () => {
     const [showNotification, setShowNotification] = useState(false);
     const [notificationMessage, setNotificationMessage] = useState('');
     const [name, setName] = useState('');
+    const [password, setPassword] = useState('');
     const [selectedState, setSelectedState] = useState<allCities | null>(null);
     const [getAllCities, setGetAllCities] = useState<allCities[]>([]);
     const [registration, setRegistration] = useState('');
@@ -85,6 +86,7 @@ const NewAccount = () => {
             {
                 name: name,
                 email: email,
+                password: password,
                 cpf: cpf,
                 phone: phone,
                 funcao: funcao,
@@ -116,7 +118,7 @@ const NewAccount = () => {
                     showSnackbarError('Erro desconhecido');
                 }
             });
-    }, [email, name, cpf, phone, funcao, cep, rua, bairro, numero, cidade, registration]);
+    }, [email, name, cpf,password, phone, funcao, cep, rua, bairro, numero, cidade, registration]);
 
     const showSnackbarError = (message: string) => {
         setNotificationMessage(message);
@@ -146,6 +148,7 @@ const NewAccount = () => {
                 <Typography variant="h4" gutterBottom>Cadastro de novos voluntarios</Typography>
                 <TextField value={name} onChange={(e) => setName(e.target.value)} label="Nome" sx={{ mt: '15px' }} />
                 <TextField value={email} onChange={(e) => setEmail(e.target.value)} label="Email" type="email" sx={{ mt: '15px' }} />
+                <TextField value={password} onChange={(e) => setPassword(e.target.value)} label="Senha" type="password" sx={{ mt: '15px' }} />
                 <TextField value={cpf} onChange={(e) => setCpf(e.target.value)} label="Cpf" type="cpf" sx={{ mt: '15px' }} />
                 <TextField value={phone} onChange={(e) => setPhone(e.target.value)} label="Phone" type="phone" sx={{ mt: '15px' }} />
                 <TextField value={funcao} onChange={(e) => setFuncao(e.target.value)} label="Funcao" type="funcao" sx={{ mt: '15px' }} />
