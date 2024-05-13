@@ -303,7 +303,7 @@ interface MyTokenPayload extends JwtPayload {
         <Divider />
         <List>
           {[
-            { text: 'Sair', icon: <LogoutIcon onClick={logout} />, href: '/home' },
+            { text: 'Sair', icon: <LogoutIcon onClick={logout} />, href: '/' },
           ].map((item) => (
             <ListItem key={item.text} disablePadding sx={{ display: 'block' }}>
               <ListItemButton
@@ -384,12 +384,8 @@ interface MyTokenPayload extends JwtPayload {
           <List>
             {[
               { text: 'Inicio', icon: <HomeIcon />, href: '/home' },
-              { text: 'Gerenciar registros', icon: <EventBusyIcon />, href: '/consultNotes' },
               { text: 'Novo voluntario', icon: <PersonAddIcon />, href: '/cadastroVoluntario' },
               { text: 'Gerenciar Voluntarios', icon: <SettingsSuggestIcon />, href: '/voluntarios' },
-              { text: 'Atualizar voluntarios', icon: <MiscellaneousServicesIcon />, href: '/admin/sendWorksheet' },
-              { text: 'Relatório de voluntarios', icon: <DescriptionIcon />, href: '/admin/reportExtraction' },
-              { text: 'Atualizar parâmetro', icon: <ManageAccountsIcon />, href: '/admin/parameterRegistration' },
 
             ].map((item) => (
               <ListItem key={item.text} disablePadding sx={{ display: 'block' }}>
@@ -419,7 +415,7 @@ interface MyTokenPayload extends JwtPayload {
           <Divider />
           <List>
             {[
-              { text: 'Sair', icon: <LogoutIcon onClick={logout} />, href: '/home' },
+              { text: 'Sair', icon: <LogoutIcon onClick={logout} />, href: '/' },
             ].map((item) => (
               <ListItem key={item.text} disablePadding sx={{ display: 'block' }}>
                 <ListItemButton

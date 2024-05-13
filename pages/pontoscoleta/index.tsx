@@ -13,6 +13,7 @@ import Address from "@/components/Address";
 import Sidebar from "@/components/sidebar/sidebar";
 import SearchAppBar from "@/components/searchBar";
 import { listAllpickupSpot } from "@/services/listPickupSpot";
+import { listInstDataByName } from "@/services/searchBar";
 
 interface MyTokenPayload extends JwtPayload {
   id: string;
@@ -43,6 +44,7 @@ const PontoColeta: React.FC = () => {
   const [notificationMessage, setNotificationMessage] = useState('');
   const [institutions, setInstitutions] = useState([]);
   const [openAddress, setOpenAddress] = React.useState(false);
+  const [searchTerm, setSearchTerm] = React.useState('');
 
   const [selectedInstitution, setSelectedInstitution] = useState<any>(null);
   const handleOpenAddress = (institution: any) => {
@@ -79,6 +81,23 @@ const PontoColeta: React.FC = () => {
     fetchToken();
   }, [getToken]);
 
+  const handleSearch = async () => {
+    try {
+      const access_token = sessionStorage.getItem('access_token');
+      if (access_token) {
+        const decodedToken = jwt.decode(access_token) as MyTokenPayload;
+        const searchData = await listInstDataByName(searchTerm, access_token);
+        console.log("SEARCH DATA", searchData)
+        setInstitutions(searchData)
+      }
+    // Handle the search data, e.g., update state or perform other actions
+  
+    } catch (error) {
+      console.error("Erro ao obter informações do voluntario:", error);
+    }
+   
+  };
+
   const handleReturnPage = () => {
     window.history.back();
   };
@@ -97,6 +116,8 @@ const PontoColeta: React.FC = () => {
     <>
           <Sidebar>
         <Box sx={{ p: 3 }}>
+        <TextField sx={{ mt: '10px', mr: '5px' }} label="Buscar nome" type="text" value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} />
+                    <Button variant='contained' color='secondary' sx={{ backgroundColor: '#23004C', mt: '10px', mr: '5px', height: '55px' }} onClick={handleSearch}>Buscar</Button>
                 <Table>
                     <TableHead>
                     <Typography sx={{ mt: '30px', mb: '25px', textAlign: 'center' }} variant="h6">Pontos de coleta</Typography>

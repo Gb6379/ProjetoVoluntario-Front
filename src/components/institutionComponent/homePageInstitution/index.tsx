@@ -111,12 +111,6 @@ const HomePageInstitution = () => {
                                 <Button size="large" variant="contained" color="secondary" href="/voluntarios" sx={{ backgroundColor: '#23004C' }}>Ver Voluntarios</Button>
                             </Box>
                         </Grid>
-                        <Grid item xs={12} sm={6}>
-                            <Box
-                                sx={{ p: 4, height: 100, width: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center', }}>
-                                <Button size="large" variant="contained" color="secondary" href="/consultNotes" sx={{ backgroundColor: '#23004C' }}>Buscar informações</Button>
-                            </Box>
-                        </Grid>
                     </Grid>
                 </Container>
                 <Snackbar open={showNotificationError} autoHideDuration={3000} onClose={() => setShowNotificationError(false)} anchorOrigin={{ vertical: 'top', horizontal: 'center' }} style={{ top: '30px' }}>

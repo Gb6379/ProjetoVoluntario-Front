@@ -8,15 +8,15 @@ import Typography from '@mui/material/Typography';
 import InputBase from '@mui/material/InputBase';
 import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
-import { listVolDataByName } from '@/services/searchBar';
+import { listInstDataByName } from '@/services/searchBar';
 import jwt, { JwtPayload } from 'jsonwebtoken';
+import { useState } from 'react';
 
 
 interface MyTokenPayload extends JwtPayload {
   roleId: number;
   id: string;
 }
-
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -68,8 +68,7 @@ export default function SearchAppBar() {
       const access_token = sessionStorage.getItem('access_token');
       if (access_token) {
         const decodedToken = jwt.decode(access_token) as MyTokenPayload;
-        const id = decodedToken.id;
-        const searchData = await listVolDataByName(searchTerm, access_token);
+        const searchData = await listInstDataByName(searchTerm, access_token);
         console.log(searchData);
       }
     // Handle the search data, e.g., update state or perform other actions
@@ -91,7 +90,9 @@ export default function SearchAppBar() {
                         inputProps={{ 'aria-label': 'search' }}
                         value={searchTerm}
                         onChange={(e) => setSearchTerm(e.target.value)}
-                        onBlur={handleSearch} // You can also trigger search on blur if needed
+                        //onBlur={handleSearch} // You can also trigger search on blur if needed
+                        onClick={handleSearch}
+
                         />
                 </Search>
     </Box>

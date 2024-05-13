@@ -13,6 +13,10 @@ import ButtonBackPage from "@/components/ButtonBackPage";
 import Address from "@/components/Address";
 import Sidebar from "@/components/sidebar/sidebar";
 import SearchAppBar from "@/components/searchBar";
+import { listInstDataByName } from "@/services/searchBar";
+import { LocalizationProvider } from '@mui/x-date-pickers';
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+import Search from "@mui/icons-material/Search";
 
 interface MyTokenPayload extends JwtPayload {
   id: string;
@@ -43,6 +47,7 @@ const Intituicoes: React.FC = () => {
   const [notificationMessage, setNotificationMessage] = useState('');
   const [institutions, setInstitutions] = useState([]);
   const [openAddress, setOpenAddress] = React.useState(false);
+  const [searchTerm, setSearchTerm] = React.useState('');
 
   const [selectedInstitution, setSelectedInstitution] = useState<any>(null);
   const handleOpenAddress = (institution: any) => {
@@ -69,6 +74,23 @@ const Intituicoes: React.FC = () => {
     };
     fetchUserInfo();
   }, []);
+
+  const handleSearch = async () => {
+    try {
+      const access_token = sessionStorage.getItem('access_token');
+      if (access_token) {
+        const decodedToken = jwt.decode(access_token) as MyTokenPayload;
+        const searchData = await listInstDataByName(searchTerm, access_token);
+        console.log("SEARCH DATA", searchData)
+        setInstitutions(searchData)
+      }
+    // Handle the search data, e.g., update state or perform other actions
+  
+    } catch (error) {
+      console.error("Erro ao obter informações do voluntario:", error);
+    }
+   
+  };
 
   useEffect(() => {
     const fetchToken = async () => {
@@ -97,9 +119,15 @@ const Intituicoes: React.FC = () => {
     <>
           <Sidebar>
         <Box sx={{ p: 3 }}>
+      
+                    <TextField sx={{ mt: '10px', mr: '5px' }} label="Buscar nome" type="text" value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} />
+                    <Button variant='contained' color='secondary' sx={{ backgroundColor: '#23004C', mt: '10px', mr: '5px', height: '55px' }} onClick={handleSearch}>Buscar</Button>
+        
+
                 <Table>
                     <TableHead>
-                    <SearchAppBar></SearchAppBar>
+                   
+                   
                     <Typography sx={{ mt: '30px', mb: '25px', textAlign: 'center' }} variant="h6">Todas Instituições</Typography>
                         <TableRow>
                             <TableCell>Nome</TableCell>

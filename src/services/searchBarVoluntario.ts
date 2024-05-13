@@ -6,10 +6,10 @@ import { listDataVoluntarioInfo } from '@/models/voluntario';
  * @param {string} accessToken
  * @returns {Promise<any>}
  */
-export const listInstDataByName = async (name: string, accessToken: string): Promise<any> => {
+export const listVolDataByName = async (name: string, accessToken: string): Promise<any> => {
     const queryParams: { [key: string ]: string } = {}
     queryParams.name = name;
-    const response: AxiosResponse<any> = await api.get(`/institution/filter`, {
+    const response: AxiosResponse<any> = await api.get(`/user/filter`, {
         headers: {
             Authorization: `Bearer ${accessToken}`,
         },
