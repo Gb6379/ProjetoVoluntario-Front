@@ -218,8 +218,8 @@ interface MyTokenPayload extends JwtPayload {
    };
  
    const logout = () => {
-     const module = new AuthModule()
-     module.logout()
+     const module2 = new AuthModule()
+     module2.logout()
      window.location.href = '/'
    };
  
@@ -246,7 +246,7 @@ interface MyTokenPayload extends JwtPayload {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" noWrap component="div" width={'90px'}>
-            <img src="/1.ico" alt="logo" style={{ width: '100px', height: '30px' }} />
+            <img src="/1.png" alt="logo" style={{ width: '100px', height: '30px' }} />
           </Typography>
           <Container sx={{ width: '100%', mr: '15px' }} >
             <Badge sx={{ marginLeft: '90%', verticalAlign: '-25px' }} badgeContent={infoNotification ? infoNotification.length : 0} color="primary"><NotificationsIcon fontSize="large" />

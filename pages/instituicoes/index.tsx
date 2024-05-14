@@ -14,8 +14,6 @@ import Address from "@/components/Address";
 import Sidebar from "@/components/sidebar/sidebar";
 import SearchAppBar from "@/components/searchBar";
 import { listInstDataByName } from "@/services/searchBar";
-import { LocalizationProvider } from '@mui/x-date-pickers';
-import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import Search from "@mui/icons-material/Search";
 
 interface MyTokenPayload extends JwtPayload {
