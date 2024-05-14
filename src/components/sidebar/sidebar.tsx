@@ -27,7 +27,6 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Footer from '../footer';
 import QuestionMarkIcon from '@mui/icons-material/QuestionMark';
-import { Avatar } from '@material-ui/core';
 import AccessAlarmIcon from '@mui/icons-material/AccessAlarm';
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
@@ -252,9 +251,6 @@ interface MyTokenPayload extends JwtPayload {
           <Container sx={{ width: '100%', mr: '15px' }} >
             <Badge sx={{ marginLeft: '90%', verticalAlign: '-25px' }} badgeContent={infoNotification ? infoNotification.length : 0} color="primary"><NotificationsIcon fontSize="large" />
             </Badge>
-            <Button sx={{ float: 'right' }}>
-              <Avatar alt="Remy Sharp" src={avatarUrl || undefined} />
-            </Button>
           </Container>
         </Toolbar>
       </AppBar>
