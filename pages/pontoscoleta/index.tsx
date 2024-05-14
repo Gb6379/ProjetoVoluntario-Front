@@ -121,7 +121,6 @@ const PontoColeta: React.FC = () => {
                 <Table>
                     <TableHead>
                     <Typography sx={{ mt: '30px', mb: '25px', textAlign: 'center' }} variant="h6">Pontos de coleta</Typography>
-                    <SearchAppBar></SearchAppBar>
                         <TableRow>
                             <TableCell>Nome</TableCell>
                             <TableCell>Tipo</TableCell>
