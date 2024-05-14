@@ -2,7 +2,7 @@ import axios from 'axios';
 
 const apiAxios = () =>{
     const axiosInstance = axios.create({
-        baseURL: 'http://localhost:4200/',//trocar url para de prod quando subir
+        baseURL: 'https://api-voluntarios-ab11acbc3a17.herokuapp.com/',//trocar url para de prod quando subir
     });
     return axiosInstance;
 }
